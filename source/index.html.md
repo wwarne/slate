@@ -37,22 +37,101 @@ GET /api/v1/informations HTTP/1.1
 > Ответ сервера:
 
 ```json
-[
-  {
+{
+  "pants_sizes": [{
     "id": 1,
-    "name": "Fluffums",
-    "breed": "calico",
-    "fluffiness": 6,
-    "cuteness": 7
-  },
-  {
+    "title": "179/39"
+  }, {
     "id": 2,
-    "name": "Max",
-    "breed": "unknown",
-    "fluffiness": 5,
-    "cuteness": 10
-  }
-]
+    "title": "180/42"
+  }, {
+    "id": 3,
+    "title": "182/44"
+  }, {
+    "id": 4,
+    "title": "184/46"
+  }],
+  "occupations": [{
+    "id": 1,
+    "title": "Менеджер"
+  }, {
+    "id": 2,
+    "title": "Дизайнер"
+  }, {
+    "id": 3,
+    "title": "Художник"
+  }, {
+    "id": 4,
+    "title": "Бизнесмен"
+  }],
+  "price_categories": [{
+    "id": 1,
+    "title": "Эконом",
+    "maxprice": 8000
+  }, {
+    "id": 2,
+    "title": "Бизнес",
+    "maxprice": 16000
+  }, {
+    "id": 3,
+    "title": "Люкс",
+    "maxprice": 32000
+  }],
+  "colors": [{
+    "id": 1,
+    "title": "Зеленый",
+    "hexcode": "#008000"
+  }, {
+    "id": 2,
+    "title": "Синий",
+    "hexcode": "#0000FF"
+  }, {
+    "id": 3,
+    "title": "Оранжевый",
+    "hexcode": "#FF5700"
+  }, {
+    "id": 4,
+    "title": "Жёлтый",
+    "hexcode": "#ffb90f"
+  }],
+  "events": [{
+    "id": 1,
+    "title": "На вечеринку",
+    "outfits": [{
+      "id": 1,
+      "event_id": 1,
+      "picture_url": "/uploads/outfit_variant/picture/1/266f020728b7441f8cb841e9798b0afe.png"
+    }, {
+      "id": 2,
+      "event_id": 1,
+      "picture_url": "/uploads/outfit_variant/picture/2/266f020728b7441f8cb841e9798b0afe.png"
+    }, {
+      "id": 3,
+      "event_id": 1,
+      "picture_url": "/uploads/outfit_variant/picture/3/266f020728b7441f8cb841e9798b0afe.png"
+    }, {
+      "id": 4,
+      "event_id": 1,
+      "picture_url": "/uploads/outfit_variant/picture/4/266f020728b7441f8cb841e9798b0afe.png"
+    }, {
+      "id": 5,
+      "event_id": 1,
+      "picture_url": "/uploads/outfit_variant/picture/5/266f020728b7441f8cb841e9798b0afe.png"
+    }]
+  }, {
+    "id": 2,
+    "title": "Деловая встреча",
+    "outfits": [{
+      "id": 6,
+      "event_id": 2,
+      "picture_url": "/uploads/outfit_variant/picture/6/266f020728b7441f8cb841e9798b0afe.png"
+    }, {
+      "id": 7,
+      "event_id": 2,
+      "picture_url": "/uploads/outfit_variant/picture/7/266f020728b7441f8cb841e9798b0afe.png"
+    }]
+  }]
+}
 ```
 
 Позволяет получить все справочные данные, необходимые для работы программы.
@@ -65,19 +144,25 @@ GET /api/v1/informations HTTP/1.1
 
 Parameter |  Описание
 --------- | ------- 
-pants_sizes | Справочник  размеров штанов.
-occupations | Справочник занятий пользоватея
-price_categories | Справочник ценовых категорий
-colors | Справочник цветов
-events | Справочник возможных событий 
+pants_sizes | [Справочник  размеров штанов](#pants_sizes)
+occupations | [Справочник занятий пользоватея](#occupations)
+price_categories | [Справочник ценовых категорий](#price_categories)
+colors | [Справочник цветов](#colors)
+events | [Справочник мероприятий](#events) 
 
-### Справочник  размеров штанов
+
+
+## Описание частей ответа
+
+### <a name="pants_sizes"></a> Справочник размеров штанов
+
+> Справочник размеров штанов
 
 ```json
 {
-    "id": 7,
+    "id": 1,
     "title": "179/39"
-}
+  }
 ```
 
 Каждый элемент имеет следующую структуру
@@ -86,6 +171,114 @@ events | Справочник возможных событий
 -----|---------
 id   | ID размера
 title| Текстовое описание
+
+### <a name="occupations"></a> Справочник занятий пользоватея
+
+> Справочник занятий
+
+```json
+{
+    "id": 1,
+    "title": "Менеджер"
+  }
+```
+
+Каждый элемент имеет следующую структуру
+
+Ключ | Описание
+-----|---------
+id   | ID размера
+title| Текстовое описание
+
+### <a name="price_categories"></a> Справочник ценовых категорий
+
+> Справочник ценовых категорий
+
+```json
+{
+    "id": 1,
+    "title": "Эконом",
+    "maxprice": 8000
+  }
+```
+
+Каждый элемент имеет следующую структуру
+
+Ключ | Описание
+-----|---------
+id   | ID размера
+title| Текстовое описание
+maxprice | Максимальная цена категории
+
+
+### <a name="colors"></a> Справочник цветов
+
+> Справочник цветов
+
+```json
+{
+    "id": 1,
+    "title": "Зеленый",
+    "hexcode": "#008000"
+  }
+```
+
+Каждый элемент имеет следующую структуру
+
+Ключ | Описание
+-----|---------
+id   | ID размера
+title| Название цвета
+hexcode | Код цвета в формате #hex
+
+### <a name="events"></a> Справочник мероприятий 
+
+> Справочник мероприятий 
+
+```json
+{
+    "id": 1,
+    "title": "На вечеринку",
+    "outfits": [{
+      "id": 1,
+      "event_id": 1,
+      "picture_url": "/uploads/outfit_variant/picture/1/266f020728b7441f8cb841e9798b0afe.png"
+    }, {
+      "id": 2,
+      "event_id": 1,
+      "picture_url": "/uploads/outfit_variant/picture/2/266f020728b7441f8cb841e9798b0afe.png"
+    }, {
+      "id": 3,
+      "event_id": 1,
+      "picture_url": "/uploads/outfit_variant/picture/3/266f020728b7441f8cb841e9798b0afe.png"
+    }, {
+      "id": 4,
+      "event_id": 1,
+      "picture_url": "/uploads/outfit_variant/picture/4/266f020728b7441f8cb841e9798b0afe.png"
+    }, {
+      "id": 5,
+      "event_id": 1,
+      "picture_url": "/uploads/outfit_variant/picture/5/266f020728b7441f8cb841e9798b0afe.png"
+    }]
+  }
+```
+
+Каждый элемент имеет следующую структуру
+
+Ключ | Описание
+-----|---------
+id   | ID размера
+title| Название цвета
+outfits | Массив вариантов образов для данного типа мероприятий
+
+в разделе `outfits` каждый вариант образа обладает следующими параметрами
+
+Ключ | Описание
+-----|---------
+id   | ID образа
+event_id| к какому мероприятию относится данный образ (в принципе не нужно, т.к. информация уже сгруппирована, но оставил на всякий случай)
+picture_url | Фотография образа, которая будет показываться пользователю
+
 
 
 
